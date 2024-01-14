@@ -1,0 +1,351 @@
+{
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "API CRUD dengan menggunakan bahasa GO",
+        "title": "UAS Pemrograman Berbasis Platform API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/api/login": {
+            "post": {
+                "description": "Authenticate user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "User login",
+                "parameters": [
+                    {
+                        "description": "User credentials for login",
+                        "name": "loginUser",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products/": {
+            "get": {
+                "description": "Get a list of all products",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get all products",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Product"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new product with the provided details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Create a new product",
+                "parameters": [
+                    {
+                        "description": "Product object to be created",
+                        "name": "product",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.Product"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products/{id}": {
+            "get": {
+                "description": "Get a product by its ID",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get a product by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Product ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Product"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a product with the provided details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Update a product by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Product ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Product object to be updated",
+                        "name": "product",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Product"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a product by its ID",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Delete a product by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Product ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/": {
+            "get": {
+                "description": "Get a list of all users",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get all users",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a new user with the provided details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Create a new user",
+                "parameters": [
+                    {
+                        "description": "User object to be created",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "description": "Get a user by their ID",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get a user by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a user with the provided details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Update a user by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "User object to be updated",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a user by their ID",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Delete a user by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.Product": {
+            "type": "object",
+            "properties": {
+                "harga": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "nama_produk": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.User": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
